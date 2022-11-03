@@ -1,16 +1,30 @@
 <!DOCTYPE html>
 <title>{% block title %}{% endblock %} - Blogr</title>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+/>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 <nav>
-  <h1>Blogr</h1>
+  <h1 class="text-uppercase fw-bold">Blogr</h1>
   <ul>
     {% if g.user %}
-    <li><span>{{ g.user['username'] }}</span></li>
-    <li><a href="{{ url_for('auth.logout') }}">Log Out</a> {% else %}</li>
-
-    <li><a href="{{ url_for('auth.register') }}">Register</a></li>
     <li>
-      <a href="{{ url_for('auth.login') }}">Log In</a>
+      <span class="username"
+        >{{ g.user['lastname'] }} {{g.user['firstname']}}</span
+      >
+    </li>
+    <li>
+      <a class="link" href="{{ url_for('auth.logout') }}">Log Out</a> {% else %}
+    </li>
+
+    <li>
+      <a class="link" href="{{ url_for('auth.register') }}">Register</a>
+    </li>
+    <li>
+      <a class="link" href="{{ url_for('auth.login') }}">Log In</a>
       {% endif %}
     </li>
   </ul>
