@@ -8,6 +8,8 @@ from blog.db import get_db
 
 bp = Blueprint('blog', __name__)
 
+# This is the home route
+
 
 @bp.route('/')
 def index():
@@ -18,6 +20,8 @@ def index():
         ' ORDER BY created DESC'
     ).fetchall()
     return render_template('blog/index.html', posts=posts)
+
+# This is the create post route function
 
 
 @bp.route('/create', methods=('GET', 'POST'))
@@ -44,6 +48,8 @@ def create():
             return redirect(url_for('blog.index'))
 
     return render_template('blog/create.html')
+
+# This function gets the post and checks if it has an author
 
 
 def get_post(id, check_author=True):

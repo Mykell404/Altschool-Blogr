@@ -10,6 +10,8 @@ from blog.db import get_db
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
+# This is the register auth function
+
 
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
@@ -50,6 +52,8 @@ def register():
 
     return render_template('auth/register.html')
 
+# This is the login auth function
+
 
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
@@ -89,6 +93,8 @@ def load_logged_in_user():
             'SELECT * FROM user WHERE id = ?', (user_id,)
         ).fetchone()
 
+
+# This is the logout auth function
 
 @bp.route('/logout')
 def logout():
